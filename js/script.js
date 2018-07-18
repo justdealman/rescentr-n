@@ -54,7 +54,8 @@ $(function(){
         myMap.geoObjects.add(myPlacemark);
     }
 
-    $('[data-img]').on('click', function() {
+    $('[data-img]').on('click', function(e) {
+		e.preventDefault();
         var img = $(this).data('img');
         $.fancybox.open({
             src  : img, // Source of the content
