@@ -121,5 +121,36 @@ $(function(){
         $('[data-tab="'+content+'"]').show();
 
     })
+	
+	function setImgCover(e) {
+		e.each(function() {
+			$(this).parent().css({
+				'background-image': 'url("'+$(this).attr('src')+'")',
+				'background-repeat': 'no-repeat',
+				'background-position': 'center center',
+				'background-size': 'cover'
+			});
+		});
+	}
+	function setRatio() {
+		$('[data-ratio]').each(function() {
+			var t = $(this).find('.scale');
+			t.css({
+				'min-height': t.outerWidth()*$(this).attr('data-ratio')
+			});
+		});
+	}
+	setImgCover($('.img-cover'));
+	function startApp() {
+		setRatio();
+	}
+	startApp();
+	var lastWidth = $(window).width();
+	$(window).on('resize', _.debounce(function() {
+		if ( $(window).width() != lastWidth ) {
+			startApp();
+			lastWidth = $(window).width();
+		}
+	}, 100));
 
 }); 
