@@ -74,6 +74,12 @@ $(function(){
             src: modal
         })
     });
+	
+	$('[data-fancybox="gallery"]').fancybox({
+		buttons: [
+			'close'
+		]
+	});
 
     $('.search__tip strong').on('click', function() {
         var val = $(this).text();
